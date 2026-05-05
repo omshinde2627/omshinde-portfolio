@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    
+    <!-- GitHub Pages SPA redirect script -->
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
 
     <title>Om Shinde — Builder, Entrepreneur & AI Creator</title>
     <meta name="description" content="Om Shinde — young builder from India crafting AI tools, websites, SEO growth systems and startup products. Hire a modern digital creator." />

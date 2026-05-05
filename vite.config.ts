@@ -4,6 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/', // Change to '/repo-name/' if deploying to GitHub Pages with a repo name
   server: {
     host: "::",
     port: 8080,
