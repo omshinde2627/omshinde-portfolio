@@ -45,7 +45,10 @@ export function ThemeProvider({
       return;
     }
 
-    root.classList.add(theme);
+    // Add a small delay to allow smooth transition
+    requestAnimationFrame(() => {
+      root.classList.add(theme);
+    });
   }, [theme]);
 
   const value = {

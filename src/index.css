@@ -147,6 +147,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   body {
     @apply text-foreground antialiased;
@@ -154,6 +155,16 @@
     background: var(--gradient-dark) !important;
     background-attachment: fixed;
     overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  /* Smooth theme transitions */
+  *,
+  *::before,
+  *::after {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
   }
 
   /* Performance optimizations */
