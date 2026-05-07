@@ -5,6 +5,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import LoadingFallback from "@/components/LoadingFallback";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import { Footer } from "@/components/ui/footer-section";
+import SEO from "@/components/SEO";
 
 // Lazy load components that are below the fold
 const About = lazy(() => import("@/components/About"));
@@ -16,22 +17,29 @@ const Contact = lazy(() => import("@/components/Contact"));
 
 const Index = () => {
   return (
-    <BeamsBackground intensity="low" className="text-foreground overflow-x-hidden">
-      <Header />
-      <ScrollProgress />
-      <main>
-        <Hero />
-        <Suspense fallback={<LoadingFallback />}>
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <WhyMe />
-          <Contact />
-        </Suspense>
-      </main>
-      <Footer />
-    </BeamsBackground>
+    <>
+      <SEO 
+        title="Om Shinde — Full Stack Developer, Entrepreneur & AI Creator | Web Development Expert India"
+        description="Om Shinde — Professional web developer from Pune, India specializing in React, TypeScript, AI tools, SEO optimization, and startup development. Hire an expert full-stack developer for modern web solutions."
+        keywords="Om Shinde, Om Shinde portfolio, web developer India, web developer Pune, full stack developer, React developer, TypeScript developer, SEO expert India, AI developer India, startup builder, freelance web developer, digital marketing expert"
+      />
+      <BeamsBackground intensity="low" className="text-foreground overflow-x-hidden">
+        <Header />
+        <ScrollProgress />
+        <main>
+          <Hero />
+          <Suspense fallback={<LoadingFallback />}>
+            <About />
+            <Skills />
+            <Projects />
+            <Experience />
+            <WhyMe />
+            <Contact />
+          </Suspense>
+        </main>
+        <Footer />
+      </BeamsBackground>
+    </>
   );
 };
 

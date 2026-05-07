@@ -3,6 +3,7 @@ import { ArrowLeft, Github, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { FlippingCard } from "@/components/ui/flipping-card";
+import SEO from "@/components/SEO";
 
 export default function HackathonBuilds() {
   const navigate = useNavigate();
@@ -39,7 +40,13 @@ export default function HackathonBuilds() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO 
+        title="Hackathon Projects — Om Shinde | Rapid Innovation & Problem Solving"
+        description="Om Shinde's hackathon journey: Hack the Flame, AWS ImpactX at IIT Bombay, and GDG TechSprint. Building MVPs under pressure, learning from setbacks, and continuous improvement."
+        keywords="Om Shinde hackathons, IIT Bombay hackathon, AWS ImpactX, rapid prototyping, MVP development, hackathon projects India, tech competitions"
+      />
+      <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-20">
         <Button
           variant="ghost"
@@ -191,6 +198,6 @@ export default function HackathonBuilds() {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </>
   );
 }

@@ -2,12 +2,19 @@ import { ArrowLeft, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 export default function Demo() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO 
+        title="Demo Projects — Om Shinde | Modern Web Design Portfolio"
+        description="Explore Om Shinde's demo web projects including Cafe Core, Gym Website, and Kanade Honda. Professional web design showcasing React, TypeScript, and modern UI/UX principles."
+        keywords="Om Shinde demo projects, web design portfolio, React projects, modern web design, cafe website, gym website, automotive website, web development showcase"
+      />
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
         <Button
@@ -216,6 +223,6 @@ export default function Demo() {
           }
         }
       `}</style>
-    </div>
+    </>
   );
 }

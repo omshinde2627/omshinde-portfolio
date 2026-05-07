@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, Search, Zap, TrendingUp, Target, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 
 export default function SEORanking() {
   const navigate = useNavigate();
@@ -22,7 +23,13 @@ export default function SEORanking() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO 
+        title="SEO Case Study — Om Shinde | Local Healthcare Website Ranking Success"
+        description="Real SEO results: Took a healthcare website from page 3-4 to 1st page of Google. Technical SEO, on-page optimization, and local search ranking by Om Shinde, SEO expert India."
+        keywords="Om Shinde SEO, SEO case study India, local SEO expert, healthcare website SEO, Google ranking improvement, SEO optimization Pune, technical SEO specialist"
+      />
+      <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-20">
         <Button
           variant="ghost"
@@ -340,6 +347,6 @@ export default function SEORanking() {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { GlassButton } from "@/components/ui/glass-button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 export default function LiveBusiness() {
   const navigate = useNavigate();
@@ -24,7 +25,13 @@ export default function LiveBusiness() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO 
+        title="Live BPO Website Project — Om Shinde | Full Stack Web Development"
+        description="Case study: End-to-end BPO website development by Om Shinde. From design to deployment with integrated email system. Live at stccloudsolutions.com generating real business inquiries."
+        keywords="Om Shinde BPO website, business website development, React website, EmailJS integration, custom domain setup, professional web development India"
+      />
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
         <Button
@@ -244,6 +251,6 @@ export default function LiveBusiness() {
 
         </div>
       </div>
-    </div>
+    </>
   );
 }
