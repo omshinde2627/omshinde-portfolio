@@ -46,8 +46,8 @@ export function Header() {
 
   return (
     <>
-      {/* Fixed Corner SkyToggle */}
-      <div className="fixed -top-2 right-0 z-[60] scale-[0.35]">
+      {/* Fixed Corner SkyToggle - Hidden on mobile/tablet to prevent overlap */}
+      <div className="hidden lg:block fixed -top-2 right-0 z-[60] scale-[0.35]">
         <SkyToggle />
       </div>
 
