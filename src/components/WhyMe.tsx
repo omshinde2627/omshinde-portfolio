@@ -105,7 +105,7 @@ export default function WhyMe() {
           ))}
         </div>
 
-        <style jsx>{`
+        <style>{`
           @keyframes shine {
             0% {
               transform: translateX(-100%);

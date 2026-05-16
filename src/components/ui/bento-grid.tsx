@@ -31,7 +31,7 @@ function BentoGrid({ items }: BentoGridProps) {
           onClick={() => item.link && navigate(item.link)}
           className={cn(
             "group relative p-4 rounded-xl overflow-hidden",
-            "border border-gray-100/80 dark:border-white/10 bg-white dark:bg-black",
+            "border border-gray-100/80 dark:border-white/10 bg-background",
             "hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:hover:shadow-[0_2px_12px_rgba(255,255,255,0.03)]",
             "hover:-translate-y-0.5 will-change-transform",
             "transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",

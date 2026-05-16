@@ -47,7 +47,7 @@ export default function HackathonBuilds() {
         keywords="Om Shinde hackathons, IIT Bombay hackathon, AWS ImpactX, rapid prototyping, MVP development, hackathon projects India, tech competitions"
       />
       <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-20">
+        <div className="container mx-auto px-4 py-20">
         <Button
           variant="ghost"
           onClick={() => navigate("/")}
@@ -197,6 +197,7 @@ export default function HackathonBuilds() {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-foreground/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
           </motion.div>
         </motion.div>
+        </div>
       </div>
     </>
   );

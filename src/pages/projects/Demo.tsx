@@ -213,7 +213,7 @@ export default function Demo() {
         </motion.div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes shine {
           0% {
             transform: translateX(-100%);
@@ -223,6 +223,7 @@ export default function Demo() {
           }
         }
       `}</style>
+      </div>
     </>
   );
 }

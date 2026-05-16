@@ -30,7 +30,7 @@ export default function SEORanking() {
         keywords="Om Shinde SEO, SEO case study India, local SEO expert, healthcare website SEO, Google ranking improvement, SEO optimization Pune, technical SEO specialist"
       />
       <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-20">
+        <div className="container mx-auto px-4 py-20">
         <Button
           variant="ghost"
           onClick={() => navigate("/")}
@@ -346,6 +346,7 @@ export default function SEORanking() {
             </div>
           </motion.div>
         </motion.div>
+        </div>
       </div>
     </>
   );

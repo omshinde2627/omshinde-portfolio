@@ -3,10 +3,10 @@ import { useTheme } from "@/components/ThemeProvider";
 import { motion } from "framer-motion";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { actualTheme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(actualTheme === "light" ? "dark" : "light");
   };
 
   return (
@@ -20,9 +20,9 @@ export function ThemeToggle() {
       <motion.div
         initial={false}
         animate={{
-          scale: theme === "dark" ? 1 : 0,
-          opacity: theme === "dark" ? 1 : 0,
-          rotate: theme === "dark" ? 0 : 180,
+          scale: actualTheme === "dark" ? 1 : 0,
+          opacity: actualTheme === "dark" ? 1 : 0,
+          rotate: actualTheme === "dark" ? 0 : 180,
         }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         className="absolute"
@@ -32,9 +32,9 @@ export function ThemeToggle() {
       <motion.div
         initial={false}
         animate={{
-          scale: theme === "light" ? 1 : 0,
-          opacity: theme === "light" ? 1 : 0,
-          rotate: theme === "light" ? 0 : -180,
+          scale: actualTheme === "light" ? 1 : 0,
+          opacity: actualTheme === "light" ? 1 : 0,
+          rotate: actualTheme === "light" ? 0 : -180,
         }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         className="absolute"

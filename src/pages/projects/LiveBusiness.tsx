@@ -32,8 +32,8 @@ export default function LiveBusiness() {
         keywords="Om Shinde BPO website, business website development, React website, EmailJS integration, custom domain setup, professional web development India"
       />
       <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="container mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="container mx-auto px-4 py-8">
         <Button
           variant="ghost"
           onClick={() => navigate("/projects/local-business-websites")}
@@ -250,6 +250,7 @@ export default function LiveBusiness() {
           </motion.div>
 
         </div>
+      </div>
       </div>
     </>
   );

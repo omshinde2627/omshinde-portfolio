@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV = [
@@ -20,6 +20,43 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    if (open) {
+      const handleClickOutside = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (!target.closest('nav') && !target.closest('.mobile-menu')) {
+          setOpen(false);
+        }
+      };
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [open]);
+
+  // Smooth scroll handler with mobile optimization
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setOpen(false);
+    
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      const navbar = document.querySelector('header');
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const offset = navbarHeight + 20;
+      
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <motion.header
       initial={{ y: -40, opacity: 0 }}
@@ -35,7 +72,11 @@ export default function Navbar() {
             scrolled ? "glass shadow-card" : ""
           }`}
         >
-          <a href="#home" className="font-display font-bold text-lg flex items-center gap-2">
+          <a 
+            href="#home" 
+            onClick={(e) => handleNavClick(e, "#home")}
+            className="font-display font-bold text-lg flex items-center gap-2"
+          >
             <span className="w-8 h-8 rounded-full bg-gradient-primary shadow-glow flex items-center justify-center text-sm">
               OS
             </span>
@@ -47,6 +88,7 @@ export default function Navbar() {
               <li key={n.href}>
                 <a
                   href={n.href}
+                  onClick={(e) => handleNavClick(e, n.href)}
                   className="relative hover:text-foreground transition-colors after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 hover:after:w-full after:bg-primary after:transition-all"
                 >
                   {n.label}
@@ -59,6 +101,7 @@ export default function Navbar() {
             <ThemeToggle />
             <a
               href="#contact"
+              onClick={(e) => handleNavClick(e, "#contact")}
               className="hidden md:inline-flex px-4 py-2 rounded-full bg-gradient-primary text-primary-foreground text-sm font-medium hover:shadow-glow transition-all hover:scale-105"
             >
               Let's Talk
@@ -67,7 +110,7 @@ export default function Navbar() {
             <button
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full glass"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full glass active:scale-95 transition-transform"
             >
               <div className="space-y-1.5">
                 <span className={`block w-5 h-px bg-foreground transition ${open ? "translate-y-2 rotate-45" : ""}`} />
@@ -78,24 +121,35 @@ export default function Navbar() {
           </div>
         </nav>
 
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="md:hidden mt-2 glass rounded-2xl p-4 space-y-2"
-          >
-            {NAV.map((n) => (
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="mobile-menu md:hidden mt-2 rounded-2xl p-4 space-y-2 bg-background/95 backdrop-blur-xl border border-border shadow-elevated"
+            >
+              {NAV.map((n) => (
+                <a
+                  key={n.href}
+                  href={n.href}
+                  onClick={(e) => handleNavClick(e, n.href)}
+                  className="block px-4 py-3 rounded-lg hover:bg-accent text-foreground font-medium active:scale-95 transition-all"
+                >
+                  {n.label}
+                </a>
+              ))}
               <a
-                key={n.href}
-                href={n.href}
-                onClick={() => setOpen(false)}
-                className="block px-3 py-2 rounded-lg hover:bg-card text-muted-foreground hover:text-foreground"
+                href="#contact"
+                onClick={(e) => handleNavClick(e, "#contact")}
+                className="block px-4 py-3 rounded-lg bg-gradient-primary text-primary-foreground text-center font-semibold active:scale-95 transition-all mt-2"
               >
-                {n.label}
+                Let's Talk
               </a>
-            ))}
-          </motion.div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );

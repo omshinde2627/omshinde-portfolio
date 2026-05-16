@@ -6,6 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     
+    <!-- Prevent white flash on load - Apply theme immediately -->
+    <script>
+      (function() {
+        try {
+          const theme = localStorage.getItem('vite-ui-theme') || 'light';
+          const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          const actualTheme = theme === 'system' ? systemTheme : theme;
+          
+          if (actualTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    
+    <!-- Inline critical CSS to prevent flash -->
+    <style>
+      html, body {
+        background-color: hsl(180 20% 85%);
+        color: hsl(222 47% 11%);
+        transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      
+      html.dark, html.dark body {
+        background-color: hsl(0 0% 4%);
+        color: hsl(210 20% 96%);
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+    </style>
+    
     <!-- GitHub Pages SPA redirect script -->
     <script>
       (function() {

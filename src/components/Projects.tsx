@@ -49,7 +49,7 @@ export default function Projects() {
   const shouldReduceMotion = useReducedMotion();
   
   return (
-    <section id="projects" className="relative py-20 md:py-32 overflow-hidden">
+    <section id="projects" className="relative py-20 md:py-32 overflow-hidden scroll-mt-20">
       {/* Voxel Dino moved from About to Projects */}
       <motion.img
         src="/assets/voxel-dino-cut.png"
