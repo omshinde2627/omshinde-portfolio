@@ -11,23 +11,23 @@ export default function LiveBusinessList() {
   const liveProjects = [
     {
       name: "STC Cloud Solutions",
-      image: "/assets/stc.png",
+      image: "/assets/stc cover.png",
       logo: "/assets/logo.png",
       gradient: "from-blue-500 to-cyan-500",
       description: "BPO & Outsourcing company website with integrated email system. Complete end-to-end development from design to deployment.",
       website: "https://stccloudsolutions.com",
       detailPage: "/projects/local-business-websites/live/stc",
-      tags: ["BPO", "React", "EmailJS", "Live"],
+      tags: [],
     },
     {
       name: "GMK Technologies",
-      image: "/assets/stc.png", // Replace with actual GMK image
-      logo: "/assets/logo.png", // Replace with actual GMK logo
+      image: "/assets/GMK cover.jpg",
+      logo: "/assets/logo.png",
       gradient: "from-purple-500 to-pink-500",
       description: "Technology solutions company website. Modern design with service showcase and client inquiry system.",
-      website: "https://gmktechnologies.com", // Replace with actual URL
+      website: "https://gmktechnologies.com",
       detailPage: "/projects/local-business-websites/live/gmk",
-      tags: ["Tech", "React", "Modern", "Live"],
+      tags: [],
     },
   ];
 
@@ -110,16 +110,18 @@ export default function LiveBusinessList() {
                               <h3 className="text-xl font-bold text-foreground">{project.name}</h3>
                             </div>
                           </div>
-                          <div className="flex flex-wrap gap-2 mb-3">
-                            {project.tags.map((tag, i) => (
-                              <span 
-                                key={i}
-                                className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
+                          {project.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-2 mb-3">
+                              {project.tags.map((tag, i) => (
+                                <span 
+                                  key={i}
+                                  className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary font-medium"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                           <p className="text-sm text-muted-foreground leading-relaxed">
                             {project.description}
                           </p>

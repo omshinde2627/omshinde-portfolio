@@ -7,11 +7,9 @@ import { TextEffect } from "@/components/ui/text-effect"
 
 export default function ShaderHero() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [isActive, setIsActive] = useState(false)
   const shouldReduceMotion = useReducedMotion()
   const [isMobile, setIsMobile] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
-  const [isThemeChanging, setIsThemeChanging] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768)
@@ -27,42 +25,8 @@ export default function ShaderHero() {
     img.onload = () => setImageLoaded(true)
   }, [])
 
-  // Detect theme changes
-  useEffect(() => {
-    const root = document.documentElement
-    const observer = new MutationObserver(() => {
-      setIsThemeChanging(true)
-      setTimeout(() => setIsThemeChanging(false), 300)
-    })
-    
-    observer.observe(root, { 
-      attributes: true, 
-      attributeFilter: ['class'] 
-    })
-    
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const handleMouseEnter = () => setIsActive(true)
-    const handleMouseLeave = () => setIsActive(false)
-
-    const container = containerRef.current
-    if (container) {
-      container.addEventListener("mouseenter", handleMouseEnter)
-      container.addEventListener("mouseleave", handleMouseLeave)
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("mouseenter", handleMouseEnter)
-        container.removeEventListener("mouseleave", handleMouseLeave)
-      }
-    }
-  }, [])
-
   return (
-    <div ref={containerRef} className="min-h-screen relative overflow-hidden bg-black dark:bg-background transition-colors duration-300">
+    <div ref={containerRef} className="min-h-screen relative overflow-hidden" style={{ backgroundColor: '#000000' }}>
       <svg className="absolute inset-0 w-0 h-0">
         <defs>
           <filter id="glass-effect" x="-50%" y="-50%" width="200%" height="200%">
@@ -117,16 +81,15 @@ export default function ShaderHero() {
 
       {/* Background - Simple gradient on mobile, MeshGradient on desktop */}
       {!isMobile ? (
-        <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`}>
+        <div className="absolute inset-0 w-full h-full" style={{ backgroundColor: '#000000' }}>
           <MeshGradient
             className="absolute inset-0 w-full h-full"
             colors={["#000000", "#3b82f6", "#06b6d4", "#1e3a5f", "#60a5fa"]}
             speed={0.2}
-            backgroundColor="#000000"
           />
         </div>
       ) : (
-        <div className={`absolute inset-0 w-full h-full bg-gradient-to-br from-black via-blue-950 to-black dark:from-background dark:via-blue-950/20 dark:to-background transition-all duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`} />
+        <div className="absolute inset-0 w-full h-full" style={{ background: 'linear-gradient(to bottom right, #000000, #172554, #000000)' }} />
       )}
 
       <main className="relative z-20 flex flex-col md:flex-row items-center justify-between px-4 md:px-8 pt-24 md:pt-32 min-h-screen gap-8">
@@ -136,12 +99,12 @@ export default function ShaderHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ 
-              duration: 0.5, 
+              duration: 0.3, 
               delay: 0,
             }}
           >
             <TextEffect
-              per={shouldReduceMotion || isMobile ? "word" : "char"}
+              per="word"
               preset="fade"
               delay={0}
               className="block text-white/60 dark:text-foreground/50 text-base sm:text-lg md:text-xl font-light tracking-wide mb-4 font-mono"
@@ -187,7 +150,7 @@ export default function ShaderHero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ 
-              duration: 0.5, 
+              duration: 0.3, 
               delay: 0,
             }}
           >
@@ -228,7 +191,7 @@ export default function ShaderHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: imageLoaded ? 1 : 0 }}
           transition={{ 
-            duration: 0.5, 
+            duration: 0.3, 
             delay: 0,
           }}
         >
@@ -238,7 +201,7 @@ export default function ShaderHero() {
               alt="Om Shinde"
               loading="eager"
               decoding="async"
-              className="w-[200px] h-[200px] object-contain drop-shadow-[0_10px_30px_rgba(59,130,246,0.3)] transition-opacity duration-300"
+              className="w-[200px] h-[200px] object-contain drop-shadow-[0_10px_30px_rgba(59,130,246,0.3)]"
               style={{ opacity: imageLoaded ? 1 : 0 }}
             />
           ) : (
@@ -247,11 +210,11 @@ export default function ShaderHero() {
         </motion.div>
         <motion.div
           className="hidden md:flex items-end justify-end mr-4 lg:mr-8 pb-0"
-          initial={shouldReduceMotion ? {} : { opacity: 0, x: 40 }}
+          initial={shouldReduceMotion ? {} : { opacity: 0, x: 20 }}
           animate={{ opacity: imageLoaded ? 1 : 0, x: 0 }}
           transition={{ 
-            duration: shouldReduceMotion ? 0 : 1.0, 
-            delay: shouldReduceMotion ? 0 : 0.6,
+            duration: shouldReduceMotion ? 0 : 0.5, 
+            delay: shouldReduceMotion ? 0 : 0.2,
             ease: [0.22, 1, 0.36, 1],
           }}
         >
@@ -261,7 +224,7 @@ export default function ShaderHero() {
               alt="Om Shinde"
               loading="eager"
               decoding="async"
-              className="w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] object-contain drop-shadow-[0_20px_60px_rgba(59,130,246,0.4)] transition-opacity duration-300"
+              className="w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] object-contain drop-shadow-[0_20px_60px_rgba(59,130,246,0.4)]"
               style={{ opacity: imageLoaded ? 1 : 0 }}
             />
           ) : (
@@ -280,7 +243,6 @@ export default function ShaderHero() {
             thickness={0.1}
             softness={0.2}
             intensity={5}
-            spotsPerColor={5}
             spotSize={0.1}
             pulse={0.1}
             smoke={0.5}
