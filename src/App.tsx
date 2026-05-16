@@ -1,17 +1,21 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ScrollToTop from "@/components/ScrollToTop";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
-import LocalBusinessWebsites from "./pages/projects/LocalBusinessWebsites.tsx";
-import LiveBusinessList from "./pages/projects/LiveBusinessList.tsx";
-import STCProject from "./pages/projects/STCProject.tsx";
-import GMKProject from "./pages/projects/GMKProject.tsx";
-import Demo from "./pages/projects/Demo.tsx";
-import SEORanking from "./pages/projects/SEORanking.tsx";
-import HackathonBuilds from "./pages/projects/HackathonBuilds.tsx";
-import StartupConcepts from "./pages/projects/StartupConcepts.tsx";
+import LoadingFallback from "@/components/LoadingFallback";
+
+// Lazy load pages for better performance
+const Index = lazy(() => import("./pages/Index.tsx"));
+const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+const LocalBusinessWebsites = lazy(() => import("./pages/projects/LocalBusinessWebsites.tsx"));
+const LiveBusinessList = lazy(() => import("./pages/projects/LiveBusinessList.tsx"));
+const STCProject = lazy(() => import("./pages/projects/STCProject.tsx"));
+const GMKProject = lazy(() => import("./pages/projects/GMKProject.tsx"));
+const Demo = lazy(() => import("./pages/projects/Demo.tsx"));
+const SEORanking = lazy(() => import("./pages/projects/SEORanking.tsx"));
+const HackathonBuilds = lazy(() => import("./pages/projects/HackathonBuilds.tsx"));
+const StartupConcepts = lazy(() => import("./pages/projects/StartupConcepts.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -20,19 +24,21 @@ const App = () => (
     <ThemeProvider defaultTheme="light" storageKey="portfolio-theme">
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/projects/local-business-websites" element={<LocalBusinessWebsites />} />
-          <Route path="/projects/local-business-websites/live" element={<LiveBusinessList />} />
-          <Route path="/projects/local-business-websites/live/stc" element={<STCProject />} />
-          <Route path="/projects/local-business-websites/live/gmk" element={<GMKProject />} />
-          <Route path="/projects/local-business-websites/demo" element={<Demo />} />
-          <Route path="/projects/seo-ranking" element={<SEORanking />} />
-          <Route path="/projects/hackathon-builds" element={<HackathonBuilds />} />
-          <Route path="/projects/startup-concepts" element={<StartupConcepts />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<LoadingFallback />}>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/projects/local-business-websites" element={<LocalBusinessWebsites />} />
+            <Route path="/projects/local-business-websites/live" element={<LiveBusinessList />} />
+            <Route path="/projects/local-business-websites/live/stc" element={<STCProject />} />
+            <Route path="/projects/local-business-websites/live/gmk" element={<GMKProject />} />
+            <Route path="/projects/local-business-websites/demo" element={<Demo />} />
+            <Route path="/projects/seo-ranking" element={<SEORanking />} />
+            <Route path="/projects/hackathon-builds" element={<HackathonBuilds />} />
+            <Route path="/projects/startup-concepts" element={<StartupConcepts />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </ThemeProvider>
   </QueryClientProvider>
