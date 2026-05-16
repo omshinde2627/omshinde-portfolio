@@ -122,7 +122,6 @@ export default function ShaderHero() {
             className="absolute inset-0 w-full h-full"
             colors={["#000000", "#3b82f6", "#06b6d4", "#1e3a5f", "#60a5fa"]}
             speed={0.2}
-            backgroundColor="#000000"
           />
         </div>
       ) : (
@@ -280,7 +279,6 @@ export default function ShaderHero() {
             thickness={0.1}
             softness={0.2}
             intensity={5}
-            spotsPerColor={5}
             spotSize={0.1}
             pulse={0.1}
             smoke={0.5}
