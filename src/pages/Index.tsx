@@ -1,19 +1,14 @@
-import { lazy, Suspense } from "react";
 import Hero from "@/components/Hero";
 import { Header } from "@/components/ui/header-2";
 import ScrollProgress from "@/components/ScrollProgress";
-import LoadingFallback from "@/components/LoadingFallback";
-import { BeamsBackground } from "@/components/ui/beams-background";
 import { Footer } from "@/components/ui/footer-section";
 import SEO from "@/components/SEO";
-
-// Lazy load components that are below the fold
-const About = lazy(() => import("@/components/About"));
-const Skills = lazy(() => import("@/components/Skills"));
-const Projects = lazy(() => import("@/components/Projects"));
-const Experience = lazy(() => import("@/components/Experience"));
-const WhyMe = lazy(() => import("@/components/WhyMe"));
-const Contact = lazy(() => import("@/components/Contact"));
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
+import WhyMe from "@/components/WhyMe";
+import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
@@ -23,22 +18,20 @@ const Index = () => {
         description="Om Shinde — Professional web developer from Pune, India specializing in React, TypeScript, AI tools, SEO optimization, and startup development. Hire an expert full-stack developer for modern web solutions."
         keywords="Om Shinde, Om Shinde portfolio, web developer India, web developer Pune, full stack developer, React developer, TypeScript developer, SEO expert India, AI developer India, startup builder, freelance web developer, digital marketing expert"
       />
-      <BeamsBackground intensity="low" className="text-foreground overflow-x-hidden">
+      <div className="text-foreground overflow-x-hidden bg-background">
         <Header />
         <ScrollProgress />
         <main>
           <Hero />
-          <Suspense fallback={<LoadingFallback />}>
-            <About />
-            <Skills />
-            <Projects />
-            <Experience />
-            <WhyMe />
-            <Contact />
-          </Suspense>
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <WhyMe />
+          <Contact />
         </main>
         <Footer />
-      </BeamsBackground>
+      </div>
     </>
   );
 };
