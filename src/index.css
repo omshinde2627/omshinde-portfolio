@@ -147,23 +147,18 @@
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
     overflow-x: hidden;
-    background-color: #000000 !important;
     /* Mobile scroll optimization */
     -webkit-overflow-scrolling: touch;
   }
   body {
     @apply text-foreground antialiased;
     font-feature-settings: "ss01", "cv11";
-    background: #000000 !important;
+    background: var(--gradient-dark) !important;
+    background-attachment: fixed;
     overflow-x: hidden;
     /* Mobile touch optimization */
     -webkit-tap-highlight-color: transparent;
     touch-action: pan-y;
-  }
-  
-  #root {
-    background-color: #000000 !important;
-    min-height: 100vh;
   }
 
   /* Smooth theme transitions for all elements */

@@ -23,64 +23,19 @@
     
     <!-- Inline critical CSS to prevent flash -->
     <style>
-      /* Aggressive anti-flash styles */
-      * {
-        background-color: transparent !important;
+      html, body {
+        background-color: hsl(180 20% 85%);
+        color: hsl(222 47% 11%);
+        transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
       }
       
-      html {
-        background-color: #000000 !important;
-        color: #ffffff;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-      }
-      
-      body {
-        background-color: #000000 !important;
-        color: #ffffff;
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-      }
-      
-      #root {
-        background-color: #000000 !important;
-        min-height: 100vh;
-      }
-      
-      html.dark {
-        background-color: hsl(0 0% 4%) !important;
+      html.dark, html.dark body {
+        background-color: hsl(0 0% 4%);
         color: hsl(210 20% 96%);
       }
       
-      html.dark body {
-        background-color: hsl(0 0% 4%) !important;
-      }
-      
-      html.dark #root {
-        background-color: hsl(0 0% 4%) !important;
-      }
-      
-      /* Prevent any white flash during load */
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: #000000;
-        z-index: 9999;
-        pointer-events: none;
-        animation: fadeOut 0.1s ease-out 0.05s forwards;
-      }
-      
-      @keyframes fadeOut {
-        to {
-          opacity: 0;
-          visibility: hidden;
-        }
+      #root {
+        min-height: 100vh;
       }
     </style>
     
@@ -131,8 +86,7 @@
     <meta name="twitter:creator" content="@omshinde" />
 
     <!-- Additional SEO -->
-    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#3b82f6" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="format-detection" content="telephone=no" />
