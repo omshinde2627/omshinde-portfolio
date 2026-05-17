@@ -106,10 +106,10 @@ export default function ShaderHero() {
         </Suspense>
       </div>
 
-      <main className="relative z-20 flex flex-col md:flex-row items-center justify-between px-4 md:px-8 pt-24 md:pt-32 min-h-screen gap-8">
-        <div className="text-left md:text-left max-w-2xl w-full md:w-auto">
+      <main className="relative z-20 flex flex-row items-center justify-between px-8 pt-32 min-h-screen gap-8">
+        <div className="text-left max-w-2xl w-auto">
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white dark:text-foreground mb-6 leading-none tracking-tight"
+            className="text-8xl font-bold text-white dark:text-foreground mb-6 leading-none tracking-tight"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ 
@@ -121,13 +121,13 @@ export default function ShaderHero() {
               per="char"
               preset="fade"
               delay={0}
-              className="block text-white/60 dark:text-foreground/50 text-base sm:text-lg md:text-xl font-light tracking-wide mb-4 font-mono"
+              className="block text-white/60 dark:text-foreground/50 text-xl font-light tracking-wide mb-4 font-mono"
               as="span"
             >
               Hi, I'm Om Shinde
             </TextEffect>
             <motion.span
-              className="block font-light text-white/95 dark:text-foreground/90 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-2 tracking-wider"
+              className="block font-light text-white/95 dark:text-foreground/90 text-6xl mb-2 tracking-wider"
               style={{
                 background: "linear-gradient(135deg, #ffffff 0%, #3b82f6 30%, #06b6d4 70%, #ffffff 100%)",
                 WebkitBackgroundClip: "text",
@@ -154,13 +154,13 @@ export default function ShaderHero() {
             per="word"
             preset="fade"
             delay={0}
-            className="text-base sm:text-lg font-light text-white/80 dark:text-foreground/70 mb-8 leading-relaxed max-w-xl"
+            className="text-lg font-light text-white/80 dark:text-foreground/70 mb-8 leading-relaxed max-w-xl"
           >
             A young builder from India — turning ideas into products through web development, AI, and growth systems.
           </TextEffect>
 
           <motion.div
-            className="flex items-center gap-4 sm:gap-6 flex-wrap"
+            className="flex items-center gap-6 flex-wrap"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ 
@@ -170,7 +170,7 @@ export default function ShaderHero() {
           >
             <motion.a
               href="#projects"
-              className="px-6 sm:px-10 py-3 sm:py-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold text-sm transition-all duration-300 hover:from-blue-400 hover:to-cyan-400 cursor-pointer shadow-lg hover:shadow-xl active:scale-95"
+              className="px-10 py-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold text-sm transition-all duration-300 hover:from-blue-400 hover:to-cyan-400 cursor-pointer shadow-lg hover:shadow-xl active:scale-95"
               whileHover={{ 
                 scale: 1.05,
                 transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
@@ -184,7 +184,7 @@ export default function ShaderHero() {
             </motion.a>
             <motion.a
               href="#contact"
-              className="px-6 sm:px-10 py-3 sm:py-4 rounded-full bg-transparent border-2 border-white/40 text-white dark:border-foreground/30 dark:text-foreground font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-white/60 dark:hover:bg-foreground/10 dark:hover:border-primary/50 dark:hover:text-primary cursor-pointer backdrop-blur-sm active:scale-95"
+              className="px-10 py-4 rounded-full bg-transparent border-2 border-white/40 text-white dark:border-foreground/30 dark:text-foreground font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-white/60 dark:hover:bg-foreground/10 dark:hover:border-primary/50 dark:hover:text-primary cursor-pointer backdrop-blur-sm active:scale-95"
               whileHover={{ 
                 scale: 1.05,
                 transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
@@ -201,29 +201,7 @@ export default function ShaderHero() {
 
         {/* Bitmoji on the right */}
         <motion.div
-          className="flex md:hidden items-center justify-center w-full mt-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: imageLoaded ? 1 : 0 }}
-          transition={{ 
-            duration: 0.5, 
-            delay: 0,
-          }}
-        >
-          {imageLoaded ? (
-            <img
-              src="/assets/bitmoji.png"
-              alt="Om Shinde"
-              loading="eager"
-              decoding="async"
-              className="w-[200px] h-[200px] object-contain drop-shadow-[0_10px_30px_rgba(59,130,246,0.3)] transition-opacity duration-300"
-              style={{ opacity: imageLoaded ? 1 : 0 }}
-            />
-          ) : (
-            <div className="w-[200px] h-[200px] bg-transparent" />
-          )}
-        </motion.div>
-        <motion.div
-          className="hidden md:flex items-end justify-end mr-4 lg:mr-8 pb-0"
+          className="flex items-end justify-end mr-8 pb-0"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: imageLoaded ? 1 : 0, x: 0 }}
           transition={{ 
@@ -238,16 +216,16 @@ export default function ShaderHero() {
               alt="Om Shinde"
               loading="eager"
               decoding="async"
-              className="w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] object-contain drop-shadow-[0_20px_60px_rgba(59,130,246,0.4)] transition-opacity duration-300"
+              className="w-[450px] h-[450px] object-contain drop-shadow-[0_20px_60px_rgba(59,130,246,0.4)] transition-opacity duration-300"
               style={{ opacity: imageLoaded ? 1 : 0 }}
             />
           ) : (
-            <div className="w-[320px] h-[320px] lg:w-[450px] lg:h-[450px] bg-transparent" />
+            <div className="w-[450px] h-[450px] bg-transparent" />
           )}
         </motion.div>
       </main>
 
-      <div className="absolute bottom-8 right-8 z-30 hidden md:block">
+      <div className="absolute bottom-8 right-8 z-30">
         <div className="relative w-20 h-20 flex items-center justify-center">
           <Suspense fallback={<div className="w-[60px] h-[60px] rounded-full border-2 border-blue-500/50 animate-pulse" />}>
             <PulsingBorder

@@ -92,7 +92,7 @@ export default function Skills() {
         src="/assets/component1.png"
         alt=""
         loading="lazy"
-        className="hidden md:block absolute top-10 right-5 w-24 md:w-32 h-auto opacity-20 pointer-events-none rotate-12"
+        className="block absolute top-10 right-5 w-32 h-auto opacity-20 pointer-events-none rotate-12"
         initial={{ opacity: 0, scale: 0.8, rotate: 20 }}
         whileInView={{ opacity: 0.2, scale: 1, rotate: 12 }}
         viewport={{ once: true }}
@@ -106,18 +106,18 @@ export default function Skills() {
           </span>
           <AnimatedText
             text="The full stack of an operator."
-            textClassName="font-display text-4xl md:text-6xl font-bold tracking-tight text-foreground"
+            textClassName="font-display text-6xl font-bold tracking-tight text-foreground"
             underlineClassName="text-primary"
             underlineDuration={1.2}
           />
-          <p className="text-muted-foreground mt-4 text-sm tracking-wide text-balance md:text-base max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 text-base tracking-wide text-balance max-w-2xl mx-auto">
             Everything you need to build fast, secure, scalable products and grow businesses.
           </p>
         </AnimatedContainer>
 
         <AnimatedContainer
           delay={0.4}
-          className="grid grid-cols-1 divide-x divide-y divide-dashed border border-dashed rounded-2xl overflow-hidden sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+          className="grid grid-cols-5 divide-x divide-y divide-dashed border border-dashed rounded-2xl overflow-hidden"
         >
           {SKILLS.map((skill, i) => (
             <FeatureCard key={i} feature={skill} />

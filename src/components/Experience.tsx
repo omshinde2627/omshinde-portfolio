@@ -17,7 +17,7 @@ export default function Experience() {
         src="/assets/component2.png"
         alt=""
         loading="lazy"
-        className="hidden md:block absolute top-20 left-5 w-28 md:w-36 h-auto opacity-20 pointer-events-none -rotate-12"
+        className="block absolute top-20 left-5 w-36 h-auto opacity-20 pointer-events-none -rotate-12"
         initial={{ opacity: 0, scale: 0.8, rotate: -20 }}
         whileInView={{ opacity: 0.2, scale: 1, rotate: -12 }}
         viewport={{ once: true }}
@@ -29,7 +29,7 @@ export default function Experience() {
         src="/assets/voxel-astronaut-cut.png"
         alt=""
         loading="lazy"
-        className="hidden md:block absolute bottom-10 right-10 w-32 md:w-40 h-auto opacity-20 pointer-events-none rotate-6"
+        className="block absolute bottom-10 right-10 w-40 h-auto opacity-20 pointer-events-none rotate-6"
         initial={{ opacity: 0, scale: 0.8, rotate: 12 }}
         whileInView={{ opacity: 0.2, scale: 1, rotate: 6 }}
         viewport={{ once: true }}
@@ -48,7 +48,7 @@ export default function Experience() {
           </span>
           <AnimatedText
             text="From learner to operator."
-            textClassName="font-display text-4xl md:text-6xl font-bold tracking-tight text-foreground"
+            textClassName="font-display text-6xl font-bold tracking-tight text-foreground"
             underlineClassName="text-primary"
             underlineDuration={1.3}
           />
@@ -56,7 +56,7 @@ export default function Experience() {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Glow line */}
-          <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
 
           <div className="space-y-12">
             {TIMELINE.map((t, i) => (
@@ -66,14 +66,14 @@ export default function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`relative flex items-start gap-6 md:gap-0 ${
-                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                className={`relative flex items-start gap-6 ${
+                  i % 2 === 0 ? "flex-row" : "flex-row-reverse"
                 }`}
               >
                 {/* Dot */}
-                <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-primary shadow-glow ring-4 ring-background z-10 mt-2" />
+                <div className="absolute left-1/2 -translate-x-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-primary shadow-glow ring-4 ring-background z-10 mt-2" />
 
-                <div className={`md:w-1/2 pl-12 md:pl-0 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                <div className={`w-1/2 ${i % 2 === 0 ? "pr-12 text-right" : "pl-12"}`}>
                   <motion.div 
                     className="rounded-2xl p-6 transition-all duration-300 inline-block w-full overflow-hidden relative group"
                     whileHover={{ y: -3 }}
@@ -116,7 +116,7 @@ export default function Experience() {
                     />
                   </motion.div>
                 </div>
-                <div className="hidden md:block md:w-1/2" />
+                <div className="block w-1/2" />
               </motion.div>
             ))}
           </div>
