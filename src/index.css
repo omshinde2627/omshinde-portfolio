@@ -153,12 +153,16 @@
   body {
     @apply text-foreground antialiased;
     font-feature-settings: "ss01", "cv11";
-    background: var(--gradient-dark) !important;
+    background: #000000 !important;
     background-attachment: fixed;
     overflow-x: hidden;
     /* Mobile touch optimization */
     -webkit-tap-highlight-color: transparent;
     touch-action: pan-y;
+  }
+  
+  body.loaded {
+    background: var(--gradient-dark) !important;
   }
 
   /* Smooth theme transitions for all elements */

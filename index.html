@@ -17,6 +17,13 @@
           if (actualTheme === 'dark') {
             document.documentElement.classList.add('dark');
           }
+          
+          // Add loaded class after a short delay to transition to gradient
+          window.addEventListener('load', function() {
+            setTimeout(function() {
+              document.body.classList.add('loaded');
+            }, 100);
+          });
         } catch (e) {}
       })();
     </script>
@@ -24,7 +31,7 @@
     <!-- Inline critical CSS to prevent flash -->
     <style>
       html, body {
-        background-color: hsl(180 20% 85%);
+        background-color: #000000;
         color: hsl(222 47% 11%);
         transition: background-color 0.4s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
       }
@@ -36,6 +43,11 @@
       
       #root {
         min-height: 100vh;
+        background-color: #000000;
+      }
+      
+      html.dark #root {
+        background-color: hsl(0 0% 4%);
       }
     </style>
     

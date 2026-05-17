@@ -63,10 +63,10 @@ export default function Contact() {
         alt=""
         loading="lazy"
         className="hidden md:block absolute top-10 right-10 w-28 md:w-36 h-auto opacity-15 pointer-events-none rotate-[8deg]"
-        initial={{ opacity: 0, scale: 0.8, rotate: 15 }}
-        whileInView={{ opacity: 0.15, scale: 1, rotate: 8 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 0.15, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       />
 
       {/* Component 4 Sticker */}
@@ -75,17 +75,18 @@ export default function Contact() {
         alt=""
         loading="lazy"
         className="hidden md:block absolute bottom-20 left-5 w-24 md:w-32 h-auto opacity-15 pointer-events-none -rotate-[10deg]"
-        initial={{ opacity: 0, scale: 0.8, rotate: -18 }}
-        whileInView={{ opacity: 0.15, scale: 1, rotate: -10 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 0.15, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       />
 
       <div className="container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-12"
         >
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-4 block">
@@ -100,10 +101,10 @@ export default function Contact() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-5xl mx-auto"
         >
           <ContactCard
