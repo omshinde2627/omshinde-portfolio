@@ -3,7 +3,6 @@ import { Zap, Target, Brain, Rocket } from "lucide-react";
 import { TextEffect } from "@/components/ui/text-effect";
 import { AnimatedText } from "@/components/ui/animated-underline-text";
 import { HandWrittenTitle } from "@/components/ui/hand-writing-text";
-import { useState, useEffect } from "react";
 
 const REASONS = [
   { icon: Brain, title: "Creative Thinking", desc: "I see patterns in design, business and behavior that most people miss." },
@@ -14,14 +13,6 @@ const REASONS = [
 
 export default function WhyMe() {
   const shouldReduceMotion = useReducedMotion();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
@@ -60,7 +51,7 @@ export default function WhyMe() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: shouldReduceMotion ? 0 : i * 0.1, duration: shouldReduceMotion ? 0 : 0.6 }}
-              whileHover={!isMobile ? { y: -4 } : {}}
+              whileHover={{ y: -4 }}
               className="group relative rounded-2xl md:rounded-3xl p-5 md:p-7 transition-all duration-300 overflow-hidden"
               style={{
                 background: 'var(--metallic-gradient)',
