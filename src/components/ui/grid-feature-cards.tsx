@@ -24,7 +24,7 @@ export function FeatureCard({ feature, className, ...props }: FeatureCardProps) 
             x="-12"
             y="4"
             squares={p}
-            className="fill-foreground/5 stroke-foreground/25 absolute inset-0 h-full w-full mix-blend-overlay"
+            className="fill-foreground/10 stroke-foreground/30 absolute inset-0 h-full w-full mix-blend-overlay"
           />
         </div>
       </div>
