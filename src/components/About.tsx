@@ -46,7 +46,7 @@ function About() {
   const shouldReduceMotion = useReducedMotion();
   
   return (
-    <section id="about" className="relative py-16 md:py-32 overflow-hidden">
+    <section id="about" className="relative py-20 md:py-32 overflow-hidden">
       <div className="absolute top-1/2 -left-40 w-[300px] md:w-[500px] h-[300px] md:h-[500px] rounded-full bg-primary/10 blur-[80px] md:blur-[120px]" />
 
       {/* Voxel1 Sticker */}

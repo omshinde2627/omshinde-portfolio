@@ -52,16 +52,16 @@ export default function WhyMe() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {REASONS.map((r, i) => (
             <motion.div
               key={r.title}
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: shouldReduceMotion ? 0 : i * 0.05, duration: shouldReduceMotion ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
+              viewport={{ once: true }}
+              transition={{ delay: shouldReduceMotion ? 0 : i * 0.1, duration: shouldReduceMotion ? 0 : 0.6 }}
               whileHover={!isMobile ? { y: -4 } : {}}
-              className="group relative rounded-2xl md:rounded-3xl p-4 md:p-7 transition-all duration-300 overflow-hidden"
+              className="group relative rounded-2xl md:rounded-3xl p-5 md:p-7 transition-all duration-300 overflow-hidden"
               style={{
                 background: 'var(--metallic-gradient)',
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 var(--metallic-highlight), inset 0 -1px 0 var(--metallic-shadow)',

@@ -11,7 +11,7 @@ const TIMELINE = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-16 md:py-32 overflow-hidden">
+    <section id="experience" className="relative py-32 overflow-hidden">
       {/* Component 2 Sticker */}
       <motion.img
         src="/assets/component2.png"
@@ -38,11 +38,10 @@ export default function Experience() {
 
       <div className="container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-12 md:mb-20"
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-4 block">
             04 — Journey
@@ -59,14 +58,14 @@ export default function Experience() {
           {/* Glow line */}
           <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
 
-          <div className="space-y-8 md:space-y-12">
+          <div className="space-y-12">
             {TIMELINE.map((t, i) => (
               <motion.div
                 key={t.title}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
                 className={`relative flex items-start gap-6 md:gap-0 ${
                   i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}

@@ -71,10 +71,10 @@ function AnimatedContainer({ className, delay = 0.1, children }: AnimatedContain
 
   return (
     <motion.div
-      initial={{ translateY: 10, opacity: 0 }}
-      whileInView={{ translateY: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ delay, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ filter: 'blur(4px)', translateY: -8, opacity: 0 }}
+      whileInView={{ filter: 'blur(0px)', translateY: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -84,7 +84,7 @@ function AnimatedContainer({ className, delay = 0.1, children }: AnimatedContain
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-16 md:py-32 overflow-hidden">
+    <section id="skills" className="relative py-32 overflow-hidden">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/10 blur-[140px]" />
 
       {/* Component 1 Sticker */}
