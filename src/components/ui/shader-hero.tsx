@@ -15,16 +15,8 @@ const PulsingBorder = lazy(() =>
 export default function ShaderHero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const shouldReduceMotion = useReducedMotion()
-  const [isMobile, setIsMobile] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
   const [isThemeChanging, setIsThemeChanging] = useState(false)
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
-  }, [])
 
   // Preload image
   useEffect(() => {
@@ -103,20 +95,16 @@ export default function ShaderHero() {
         </defs>
       </svg>
 
-      {/* Background - Simple gradient on mobile, MeshGradient on desktop */}
-      {!isMobile ? (
-        <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`}>
-          <Suspense fallback={<div className="absolute inset-0 w-full h-full bg-gradient-to-br from-black via-blue-950 to-black dark:from-background dark:via-blue-950/20 dark:to-background" />}>
-            <MeshGradient
-              className="absolute inset-0 w-full h-full"
-              colors={["#000000", "#3b82f6", "#06b6d4", "#1e3a5f", "#60a5fa"]}
-              speed={0.2}
-            />
-          </Suspense>
-        </div>
-      ) : (
-        <div className={`absolute inset-0 w-full h-full bg-gradient-to-br from-black via-blue-950 to-black dark:from-background dark:via-blue-950/20 dark:to-background transition-all duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`} />
-      )}
+      {/* Background - MeshGradient on all devices */}
+      <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`}>
+        <Suspense fallback={<div className="absolute inset-0 w-full h-full bg-gradient-to-br from-black via-blue-950 to-black dark:from-background dark:via-blue-950/20 dark:to-background" />}>
+          <MeshGradient
+            className="absolute inset-0 w-full h-full"
+            colors={["#000000", "#3b82f6", "#06b6d4", "#1e3a5f", "#60a5fa"]}
+            speed={0.2}
+          />
+        </Suspense>
+      </div>
 
       <main className="relative z-20 flex flex-col md:flex-row items-center justify-between px-4 md:px-8 pt-24 md:pt-32 min-h-screen gap-8">
         <div className="text-left md:text-left max-w-2xl w-full md:w-auto">
@@ -130,7 +118,7 @@ export default function ShaderHero() {
             }}
           >
             <TextEffect
-              per={shouldReduceMotion || isMobile ? "word" : "char"}
+              per="char"
               preset="fade"
               delay={0}
               className="block text-white/60 dark:text-foreground/50 text-base sm:text-lg md:text-xl font-light tracking-wide mb-4 font-mono"
@@ -183,10 +171,10 @@ export default function ShaderHero() {
             <motion.a
               href="#projects"
               className="px-6 sm:px-10 py-3 sm:py-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold text-sm transition-all duration-300 hover:from-blue-400 hover:to-cyan-400 cursor-pointer shadow-lg hover:shadow-xl active:scale-95"
-              whileHover={!isMobile ? { 
+              whileHover={{ 
                 scale: 1.05,
                 transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
-              } : {}}
+              }}
               whileTap={{ 
                 scale: 0.95,
                 transition: { duration: 0.1 },
@@ -197,10 +185,10 @@ export default function ShaderHero() {
             <motion.a
               href="#contact"
               className="px-6 sm:px-10 py-3 sm:py-4 rounded-full bg-transparent border-2 border-white/40 text-white dark:border-foreground/30 dark:text-foreground font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-white/60 dark:hover:bg-foreground/10 dark:hover:border-primary/50 dark:hover:text-primary cursor-pointer backdrop-blur-sm active:scale-95"
-              whileHover={!isMobile ? { 
+              whileHover={{ 
                 scale: 1.05,
                 transition: { duration: 0.2, ease: [0.22, 1, 0.36, 1] },
-              } : {}}
+              }}
               whileTap={{ 
                 scale: 0.95,
                 transition: { duration: 0.1 },
@@ -236,11 +224,11 @@ export default function ShaderHero() {
         </motion.div>
         <motion.div
           className="hidden md:flex items-end justify-end mr-4 lg:mr-8 pb-0"
-          initial={shouldReduceMotion ? {} : { opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: imageLoaded ? 1 : 0, x: 0 }}
           transition={{ 
-            duration: shouldReduceMotion ? 0 : 1.0, 
-            delay: shouldReduceMotion ? 0 : 0.6,
+            duration: 1.0, 
+            delay: 0.6,
             ease: [0.22, 1, 0.36, 1],
           }}
         >
@@ -259,7 +247,7 @@ export default function ShaderHero() {
         </motion.div>
       </main>
 
-      <div className="absolute bottom-8 right-8 z-30 hidden lg:block">
+      <div className="absolute bottom-8 right-8 z-30 hidden md:block">
         <div className="relative w-20 h-20 flex items-center justify-center">
           <Suspense fallback={<div className="w-[60px] h-[60px] rounded-full border-2 border-blue-500/50 animate-pulse" />}>
             <PulsingBorder
