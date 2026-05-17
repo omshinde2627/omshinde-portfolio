@@ -128,7 +128,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="mobile-menu md:hidden mt-2 rounded-2xl p-4 space-y-2 bg-background/95 backdrop-blur-xl border border-border shadow-elevated"
+              className="mobile-menu md:hidden mt-2 rounded-2xl p-4 space-y-2 bg-background/98 backdrop-blur-xl border border-border shadow-elevated"
             >
               {NAV.map((n) => (
                 <a
