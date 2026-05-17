@@ -1,13 +1,19 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { MeshGradient, PulsingBorder } from "@paper-design/shaders-react"
+import { useEffect, useRef, useState, lazy, Suspense } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { TextEffect } from "@/components/ui/text-effect"
 
+// Lazy load shader components to prevent blocking
+const MeshGradient = lazy(() => 
+  import("@paper-design/shaders-react").then(module => ({ default: module.MeshGradient })).catch(() => ({ default: () => null }))
+)
+const PulsingBorder = lazy(() => 
+  import("@paper-design/shaders-react").then(module => ({ default: module.PulsingBorder })).catch(() => ({ default: () => null }))
+)
+
 export default function ShaderHero() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [isActive, setIsActive] = useState(false)
   const shouldReduceMotion = useReducedMotion()
   const [isMobile, setIsMobile] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
@@ -41,24 +47,6 @@ export default function ShaderHero() {
     })
     
     return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const handleMouseEnter = () => setIsActive(true)
-    const handleMouseLeave = () => setIsActive(false)
-
-    const container = containerRef.current
-    if (container) {
-      container.addEventListener("mouseenter", handleMouseEnter)
-      container.addEventListener("mouseleave", handleMouseLeave)
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener("mouseenter", handleMouseEnter)
-        container.removeEventListener("mouseleave", handleMouseLeave)
-      }
-    }
   }, [])
 
   return (
@@ -118,11 +106,13 @@ export default function ShaderHero() {
       {/* Background - Simple gradient on mobile, MeshGradient on desktop */}
       {!isMobile ? (
         <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`}>
-          <MeshGradient
-            className="absolute inset-0 w-full h-full"
-            colors={["#000000", "#3b82f6", "#06b6d4", "#1e3a5f", "#60a5fa"]}
-            speed={0.2}
-          />
+          <Suspense fallback={<div className="absolute inset-0 w-full h-full bg-gradient-to-br from-black via-blue-950 to-black dark:from-background dark:via-blue-950/20 dark:to-background" />}>
+            <MeshGradient
+              className="absolute inset-0 w-full h-full"
+              colors={["#000000", "#3b82f6", "#06b6d4", "#1e3a5f", "#60a5fa"]}
+              speed={0.2}
+            />
+          </Suspense>
         </div>
       ) : (
         <div className={`absolute inset-0 w-full h-full bg-gradient-to-br from-black via-blue-950 to-black dark:from-background dark:via-blue-950/20 dark:to-background transition-all duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`} />
@@ -271,27 +261,29 @@ export default function ShaderHero() {
 
       <div className="absolute bottom-8 right-8 z-30 hidden lg:block">
         <div className="relative w-20 h-20 flex items-center justify-center">
-          <PulsingBorder
-            colors={["#3b82f6", "#06b6d4", "#60a5fa", "#00FF88", "#93c5fd", "#2563eb", "#ffffff"]}
-            colorBack="#00000000"
-            speed={1.5}
-            roundness={1}
-            thickness={0.1}
-            softness={0.2}
-            intensity={5}
-            spotSize={0.1}
-            pulse={0.1}
-            smoke={0.5}
-            smokeSize={4}
-            scale={0.65}
-            rotation={0}
-            frame={9161408.251009725}
-            style={{
-              width: "60px",
-              height: "60px",
-              borderRadius: "50%",
-            }}
-          />
+          <Suspense fallback={<div className="w-[60px] h-[60px] rounded-full border-2 border-blue-500/50 animate-pulse" />}>
+            <PulsingBorder
+              colors={["#3b82f6", "#06b6d4", "#60a5fa", "#00FF88", "#93c5fd", "#2563eb", "#ffffff"]}
+              colorBack="#00000000"
+              speed={1.5}
+              roundness={1}
+              thickness={0.1}
+              softness={0.2}
+              intensity={5}
+              spotSize={0.1}
+              pulse={0.1}
+              smoke={0.5}
+              smokeSize={4}
+              scale={0.65}
+              rotation={0}
+              frame={9161408.251009725}
+              style={{
+                width: "60px",
+                height: "60px",
+                borderRadius: "50%",
+              }}
+            />
+          </Suspense>
 
           {/* Rotating Text Around the Pulsing Border */}
           <motion.svg
