@@ -86,8 +86,8 @@ export function Header() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="fixed inset-0 top-16 z-40 bg-background/98 backdrop-blur-xl md:hidden">
-          <div className="flex h-full flex-col justify-between p-4 bg-background/95">
+        <div className="fixed inset-0 top-16 z-40 bg-background md:hidden backdrop-blur-xl">
+          <div className="flex h-full flex-col justify-between p-4 bg-background">
             <div className="space-y-1">
               {links.map((link) => (
                 <a

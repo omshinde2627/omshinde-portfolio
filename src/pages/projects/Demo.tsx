@@ -40,62 +40,12 @@ export default function Demo() {
         </motion.div>
 
         {/* Videos Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {/* Portfolio Demo Video */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="group relative rounded-2xl overflow-hidden"
-            style={{
-              background: 'var(--metallic-gradient)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 var(--metallic-highlight), inset 0 -1px 0 var(--metallic-shadow)',
-              border: '1px solid var(--metallic-border)',
-            }}
-          >
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center shadow-lg">
-                  <Play className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold">Portfolio Demo</h3>
-                  <p className="text-sm text-muted-foreground">Personal Portfolio</p>
-                </div>
-              </div>
-              
-              <div className="relative rounded-xl overflow-hidden bg-black/5 dark:bg-white/5">
-                <video
-                  className="w-full h-auto"
-                  controls
-                  preload="metadata"
-                >
-                  <source src="/assets/portfolio demo.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              <p className="mt-4 text-sm text-muted-foreground">
-                Modern portfolio website showcasing projects, skills, and professional experience with smooth animations.
-              </p>
-            </div>
-
-            {/* Metallic shine effect */}
-            <div 
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-              style={{
-                background: 'linear-gradient(110deg, transparent 0%, var(--metallic-shine-start) 45%, var(--metallic-shine-mid) 50%, var(--metallic-shine-start) 55%, transparent 100%)',
-                transform: 'translateX(-100%)',
-                animation: 'shine 3s infinite',
-              }}
-            />
-          </motion.div>
-
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {/* Cafe Core Video */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             className="group relative rounded-2xl overflow-hidden"
             style={{
               background: 'var(--metallic-gradient)',
@@ -145,7 +95,7 @@ export default function Demo() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="group relative rounded-2xl overflow-hidden"
             style={{
               background: 'var(--metallic-gradient)',
@@ -195,7 +145,7 @@ export default function Demo() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="group relative rounded-2xl overflow-hidden"
             style={{
               background: 'var(--metallic-gradient)',
@@ -246,7 +196,7 @@ export default function Demo() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="relative rounded-2xl p-8 mb-8"
           style={{
             background: 'var(--metallic-gradient)',
