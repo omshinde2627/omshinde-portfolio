@@ -11,7 +11,7 @@ export default function LiveBusinessList() {
   const liveProjects = [
     {
       name: "STC Cloud Solutions",
-      image: "/assets/stc.png",
+      image: "/assets/stc cover.png",
       logo: "/assets/logo.png",
       gradient: "from-blue-500 to-cyan-500",
       description: "BPO & Outsourcing company website with integrated email system. Complete end-to-end development from design to deployment.",
@@ -21,11 +21,11 @@ export default function LiveBusinessList() {
     },
     {
       name: "GMK Technologies",
-      image: "/assets/stc.png", // Replace with actual GMK image
-      logo: "/assets/logo.png", // Replace with actual GMK logo
+      image: "/assets/GMK cover.jpg",
+      logo: "/assets/logo.png",
       gradient: "from-purple-500 to-pink-500",
       description: "Technology solutions company website. Modern design with service showcase and client inquiry system.",
-      website: "https://gmktechnologies.com", // Replace with actual URL
+      website: "https://gmktechnologies.com",
       detailPage: "/projects/local-business-websites/live/gmk",
       tags: [],
     },
