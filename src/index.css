@@ -4,67 +4,67 @@
 
 @layer base {
   :root {
-    /* Light mode - Using dark mode colors for consistency */
-    --background: 0 0% 4%;
-    --foreground: 210 20% 96%;
+    /* Light mode - White background */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
 
-    --card: 0 0% 7%;
-    --card-foreground: 210 20% 96%;
+    --card: 0 0% 98%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 0 0% 7%;
-    --popover-foreground: 210 20% 96%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 222 47% 11%;
 
     /* Blue accent */
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 199 89% 48%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 210 20% 96%;
+    --secondary: 210 10% 88%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 210 8% 65%;
+    --muted: 210 10% 88%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 199 89% 48%;
-    --accent-foreground: 0 0% 4%;
+    --accent: 210 10% 88%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 12%;
+    --border: 0 0% 82%;
+    --input: 0 0% 82%;
     --ring: 217 91% 60%;
 
     --radius: 1rem;
 
-    /* Gradients - Dark mode style */
+    /* Gradients - Light mode */
     --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(199 89% 48%));
-    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(217 91% 60% / 0.35), transparent 70%);
-    --gradient-text: linear-gradient(135deg, hsl(210 20% 98%) 0%, hsl(199 89% 48%) 50%, hsl(217 91% 60%) 100%);
-    --gradient-border: linear-gradient(135deg, hsl(217 91% 60% / 0.6), hsl(199 89% 48% / 0.2), transparent);
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 4%) 0%, hsl(0 0% 6%) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(217 91% 60% / 0.15), transparent 70%);
+    --gradient-text: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(217 91% 60%) 50%, hsl(199 89% 48%) 100%);
+    --gradient-border: linear-gradient(135deg, hsl(217 91% 60% / 0.3), hsl(199 89% 48% / 0.1), transparent);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(0 0% 98%) 100%);
 
-    /* Shadows - Dark mode style */
-    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.4), 0 0 80px hsl(199 89% 48% / 0.2);
-    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4), 0 0 0 1px hsl(0 0% 100% / 0.05);
-    --shadow-elevated: 0 20px 60px hsl(0 0% 0% / 0.6), 0 0 40px hsl(217 91% 60% / 0.15);
+    /* Shadows - Light mode */
+    --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.2), 0 0 80px hsl(199 89% 48% / 0.1);
+    --shadow-card: 0 8px 32px hsl(222 47% 11% / 0.08), 0 0 0 1px hsl(0 0% 82% / 0.5);
+    --shadow-elevated: 0 20px 60px hsl(222 47% 11% / 0.12), 0 0 40px hsl(217 91% 60% / 0.08);
 
-    /* Glass - Dark mode style */
-    --glass-bg: hsl(0 0% 8% / 0.6);
-    --glass-border: hsl(0 0% 100% / 0.08);
+    /* Glass - Light mode */
+    --glass-bg: hsl(0 0% 96% / 0.7);
+    --glass-border: hsl(0 0% 82% / 0.8);
 
     --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 
-    /* Metallic card variables - Dark mode style */
-    --metallic-gradient: linear-gradient(135deg, hsl(0 0% 18%) 0%, hsl(0 0% 12%) 25%, hsl(0 0% 16%) 50%, hsl(0 0% 10%) 75%, hsl(0 0% 14%) 100%);
-    --metallic-highlight: rgba(255, 255, 255, 0.15);
-    --metallic-shadow: rgba(0, 0, 0, 0.5);
-    --metallic-border: rgba(255, 255, 255, 0.1);
-    --metallic-shine-start: rgba(255, 255, 255, 0.1);
-    --metallic-shine-mid: rgba(255, 255, 255, 0.25);
-    --metallic-texture: rgba(255, 255, 255, 0.05);
-    --metallic-edge-light: rgba(255, 255, 255, 0.2);
-    --metallic-edge-dark: rgba(0, 0, 0, 0.6);
+    /* Metallic card variables - Light mode */
+    --metallic-gradient: linear-gradient(135deg, hsl(0 0% 92%) 0%, hsl(0 0% 85%) 25%, hsl(0 0% 90%) 50%, hsl(0 0% 82%) 75%, hsl(0 0% 88%) 100%);
+    --metallic-highlight: rgba(255, 255, 255, 0.6);
+    --metallic-shadow: rgba(0, 0, 0, 0.2);
+    --metallic-border: rgba(255, 255, 255, 0.3);
+    --metallic-shine-start: rgba(255, 255, 255, 0.4);
+    --metallic-shine-mid: rgba(255, 255, 255, 0.8);
+    --metallic-texture: rgba(255, 255, 255, 0.1);
+    --metallic-edge-light: rgba(255, 255, 255, 0.8);
+    --metallic-edge-dark: rgba(0, 0, 0, 0.3);
   }
 
   .dark {
@@ -142,7 +142,7 @@
   body {
     @apply text-foreground antialiased;
     font-feature-settings: "ss01", "cv11";
-    background: #0a0a0a !important;
+    background: #ffffff !important;
     background-attachment: fixed;
     overflow-x: hidden;
     /* Mobile touch optimization */
