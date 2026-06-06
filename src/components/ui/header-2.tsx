@@ -99,17 +99,23 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobile Hamburger - Enhanced visibility */}
-        <Button 
-          size="icon" 
-          variant="ghost" 
+        {/* Mobile Hamburger - Custom Image */}
+        <button 
           onClick={() => setOpen(!open)} 
-          className="md:hidden z-[70] h-11 w-11 hover:bg-primary/10 active:scale-95 transition-all"
+          className="md:hidden z-[70] p-2 hover:opacity-80 active:scale-95 transition-all"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <MenuToggleIcon open={open} className="size-7 text-foreground" duration={200} strokeWidth={2.5} />
-        </Button>
+          {!open ? (
+            <img 
+              src="/assets/hamburger.jpg" 
+              alt="Menu" 
+              className="w-8 h-8 object-contain"
+            />
+          ) : (
+            <X className="w-7 h-7 text-foreground" />
+          )}
+        </button>
       </nav>
       </header>
 
