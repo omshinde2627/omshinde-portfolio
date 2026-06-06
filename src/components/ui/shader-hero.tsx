@@ -17,6 +17,17 @@ export default function ShaderHero() {
   const shouldReduceMotion = useReducedMotion()
   const [imageLoaded, setImageLoaded] = useState(false)
   const [isThemeChanging, setIsThemeChanging] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024) // lg breakpoint
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   // Preload image
   useEffect(() => {
@@ -42,7 +53,7 @@ export default function ShaderHero() {
   }, [])
 
   return (
-    <div ref={containerRef} className="min-h-screen relative overflow-hidden bg-teal-600 transition-colors duration-300">
+    <div ref={containerRef} className="min-h-screen relative overflow-hidden bg-black transition-colors duration-300">
       <svg className="absolute inset-0 w-0 h-0">
         <defs>
           <filter id="glass-effect" x="-50%" y="-50%" width="200%" height="200%">
@@ -95,16 +106,23 @@ export default function ShaderHero() {
         </defs>
       </svg>
 
-      {/* Background - MeshGradient - always teal */}
-      <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`}>
-        <Suspense fallback={<div className="absolute inset-0 w-full h-full bg-gradient-to-br from-teal-700 via-cyan-600 to-teal-800" />}>
-          <MeshGradient
-            className="absolute inset-0 w-full h-full"
-            colors={["#0f766e", "#06b6d4", "#0e7490", "#14b8a6", "#0891b2"]}
-            speed={0.2}
-          />
-        </Suspense>
-      </div>
+      {/* Background - MeshGradient only on desktop (disable on mobile for performance) */}
+      {!isMobile && (
+        <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isThemeChanging ? 'opacity-0' : 'opacity-100'}`}>
+          <Suspense fallback={<div className="absolute inset-0 w-full h-full bg-gradient-to-br from-black via-blue-950 to-black" />}>
+            <MeshGradient
+              className="absolute inset-0 w-full h-full"
+              colors={["#000000", "#3b82f6", "#06b6d4", "#1e3a5f", "#60a5fa"]}
+              speed={0.2}
+            />
+          </Suspense>
+        </div>
+      )}
+      
+      {/* Mobile: Static gradient background (no shader) */}
+      {isMobile && (
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-black via-blue-950 to-black" />
+      )}
 
       <main className="relative z-20 flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-8 lg:pb-0 min-h-screen gap-6 sm:gap-8">
         <div className="text-center lg:text-left max-w-2xl w-full lg:w-auto">
