@@ -55,9 +55,9 @@ export function Header() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 w-full will-change-transform',
           {
-            'bg-background/95 border-b border-border shadow-sm':
+            'bg-background/95 backdrop-blur-xl border-b border-border shadow-sm':
               scrolled && !open,
-            'bg-background': open,
+            'bg-background backdrop-blur-xl': open,
           },
         )}
         style={{ transition: 'background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease' }}
