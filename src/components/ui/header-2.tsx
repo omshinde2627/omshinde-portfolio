@@ -108,7 +108,7 @@ export function Header() {
         >
           {!open ? (
             <img 
-              src="/assets/hamburger.jpg" 
+              src="/assets/hamburger.png" 
               alt="Menu" 
               className="w-8 h-8 object-contain"
             />
