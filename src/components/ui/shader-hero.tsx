@@ -144,19 +144,17 @@ export default function ShaderHero() {
             >
               Hi, I'm Om Shinde
             </TextEffect>
-            <motion.span
-              className="block font-light text-white/95 text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-2 tracking-wider"
+            <span
+              className="block font-light text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-2 tracking-wider"
               style={{
                 background: "linear-gradient(135deg, #ffffff 0%, #3b82f6 30%, #06b6d4 70%, #ffffff 100%)",
                 WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               }}
             >
-              <TextEffect per="word" preset="fade" delay={0} as="span" className="inline">
-                I Build Ideas Into
-              </TextEffect>
-            </motion.span>
+              I Build Ideas Into
+            </span>
             <TextEffect
               per="word"
               preset="fade"
