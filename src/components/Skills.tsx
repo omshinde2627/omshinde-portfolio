@@ -84,40 +84,40 @@ function AnimatedContainer({ className, delay = 0.1, children }: AnimatedContain
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-32 overflow-hidden">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-accent/10 blur-[140px]" />
+    <section id="skills" className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+      <div className="absolute top-0 right-0 w-[400px] sm:w-[500px] lg:w-[600px] h-[400px] sm:h-[500px] lg:h-[600px] rounded-full bg-accent/10 blur-[140px]" />
 
       {/* Component 1 Sticker */}
       <motion.img
         src="/assets/component1.png"
         alt=""
         loading="lazy"
-        className="block absolute top-10 right-5 w-32 h-auto opacity-20 pointer-events-none rotate-12"
+        className="hidden lg:block absolute top-10 right-5 w-24 lg:w-32 h-auto opacity-20 pointer-events-none rotate-12"
         initial={{ opacity: 0, scale: 0.8, rotate: 20 }}
         whileInView={{ opacity: 0.2, scale: 1, rotate: 12 }}
         viewport={{ once: true }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      <div className="container relative z-10">
-        <AnimatedContainer className="text-center mb-16">
+      <div className="container relative z-10 px-4 sm:px-6">
+        <AnimatedContainer className="text-center mb-12 sm:mb-16">
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-4 block">
             02 — Skills
           </span>
           <AnimatedText
             text="The full stack of an operator."
-            textClassName="font-display text-6xl font-bold tracking-tight text-foreground"
+            textClassName="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground"
             underlineClassName="text-primary"
             underlineDuration={1.2}
           />
-          <p className="text-muted-foreground mt-4 text-base tracking-wide text-balance max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 text-sm sm:text-base tracking-wide text-balance max-w-2xl mx-auto px-4">
             Everything you need to build fast, secure, scalable products and grow businesses.
           </p>
         </AnimatedContainer>
 
         <AnimatedContainer
           delay={0.4}
-          className="grid grid-cols-5 divide-x divide-y divide-dashed border border-dashed rounded-2xl overflow-hidden"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 divide-x divide-y divide-dashed border border-dashed rounded-2xl overflow-hidden"
         >
           {SKILLS.map((skill, i) => (
             <FeatureCard key={i} feature={skill} />

@@ -15,35 +15,35 @@ export default function WhyMe() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-glow opacity-50 pointer-events-none" />
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
-          className="max-w-3xl mb-16"
+          className="max-w-3xl mb-12 sm:mb-16"
         >
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-4 block">
             05 — Why Me
           </span>
           <AnimatedText
             text="Why work with Om?"
-            textClassName="font-display text-6xl font-bold tracking-tight text-foreground text-left"
+            textClassName="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-left"
             underlineClassName="text-primary"
             underlineDuration={1.2}
             className="items-start mb-6"
           />
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed">
             <TextEffect per="word" preset="fade" delay={shouldReduceMotion ? 0 : 0.2} as="span" className="inline">
               Because I combine creativity, execution, business thinking and modern skills — in one operator.
             </TextEffect>
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {REASONS.map((r, i) => (
             <motion.div
               key={r.title}
@@ -52,7 +52,7 @@ export default function WhyMe() {
               viewport={{ once: true }}
               transition={{ delay: shouldReduceMotion ? 0 : i * 0.1, duration: shouldReduceMotion ? 0 : 0.6 }}
               whileHover={{ y: -4 }}
-              className="group relative rounded-3xl p-7 transition-all duration-300 overflow-hidden"
+              className="group relative rounded-3xl p-5 sm:p-6 lg:p-7 transition-all duration-300 overflow-hidden"
               style={{
                 background: 'var(--metallic-gradient)',
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 var(--metallic-highlight), inset 0 -1px 0 var(--metallic-shadow)',
@@ -78,11 +78,11 @@ export default function WhyMe() {
               />
 
               <div className="relative z-10">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center mb-5 shadow-lg group-hover:rotate-6 transition-transform">
-                  <r.icon className="w-5 h-5 text-primary-foreground" />
+                <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-2xl bg-gradient-primary flex items-center justify-center mb-4 sm:mb-5 shadow-lg group-hover:rotate-6 transition-transform">
+                  <r.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary-foreground" />
                 </div>
-                <h3 className="font-display text-lg font-semibold mb-2 text-foreground">{r.title}</h3>
-                <p className="text-sm text-foreground/70 leading-relaxed">{r.desc}</p>
+                <h3 className="font-display text-base sm:text-lg font-semibold mb-2 text-foreground">{r.title}</h3>
+                <p className="text-xs sm:text-sm text-foreground/70 leading-relaxed">{r.desc}</p>
               </div>
 
               {/* Edge highlight */}

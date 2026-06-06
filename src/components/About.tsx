@@ -46,15 +46,15 @@ function About() {
   const shouldReduceMotion = useReducedMotion();
   
   return (
-    <section id="about" className="relative py-32 overflow-hidden">
-      <div className="absolute top-1/2 -left-40 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]" />
+    <section id="about" className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
+      <div className="absolute top-1/2 -left-40 w-[400px] sm:w-[500px] h-[400px] sm:h-[500px] rounded-full bg-primary/10 blur-[120px]" />
 
       {/* Voxel1 Sticker */}
       <motion.img
         src="/assets/voxel1.png"
         alt=""
         loading="lazy"
-        className="block absolute top-20 right-10 w-36 h-auto opacity-20 pointer-events-none rotate-[15deg]"
+        className="hidden lg:block absolute top-20 right-10 w-28 lg:w-36 h-auto opacity-20 pointer-events-none rotate-[15deg]"
         initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.8, rotate: 22 }}
         whileInView={{ opacity: 0.2, scale: 1, rotate: 15 }}
         viewport={{ once: true }}
@@ -66,14 +66,14 @@ function About() {
         src="/assets/v1.png"
         alt=""
         loading="lazy"
-        className="block absolute bottom-10 left-10 w-32 h-auto opacity-20 pointer-events-none -rotate-[8deg]"
+        className="hidden lg:block absolute bottom-10 left-10 w-24 lg:w-32 h-auto opacity-20 pointer-events-none -rotate-[8deg]"
         initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.8, rotate: -15 }}
         whileInView={{ opacity: 0.2, scale: 1, rotate: -8 }}
         viewport={{ once: true }}
         transition={{ duration: shouldReduceMotion ? 0 : 1, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={shouldReduceMotion ? {} : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ function About() {
             duration: shouldReduceMotion ? 0 : 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="grid grid-cols-2 gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center"
         >
           <div>
             <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-4 block">
@@ -90,16 +90,16 @@ function About() {
             </span>
             <AnimatedText
               text="Young builder. Real execution."
-              textClassName="font-display text-6xl font-bold tracking-tight text-foreground text-left"
+              textClassName="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-left"
               underlineClassName="text-primary"
               underlineDuration={1.2}
               className="items-start mb-6"
             />
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-6">
               I'm Om Shinde — a young ambitious builder from India focused on creating businesses,
               products, and digital systems that solve real problems.
             </p>
-            <TextEffect per="word" preset={shouldReduceMotion ? "fade" : "blur"} delay={shouldReduceMotion ? 0 : 0.3} className="text-lg text-muted-foreground leading-relaxed mb-8">
+            <TextEffect per="word" preset={shouldReduceMotion ? "fade" : "blur"} delay={shouldReduceMotion ? 0 : 0.3} className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8">
               I don't just learn trends. I build with them.
             </TextEffect>
 
@@ -115,7 +115,7 @@ function About() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {STATS.map((s, i) => (
               <motion.div
                 key={s.label}
@@ -127,12 +127,12 @@ function About() {
                   duration: shouldReduceMotion ? 0 : 0.7,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="relative glass glow-border rounded-2xl p-6 hover:shadow-glow transition-all duration-500 group"
+                className="relative glass glow-border rounded-2xl p-4 sm:p-5 lg:p-6 hover:shadow-glow transition-all duration-500 group"
               >
-                <div className="font-display text-5xl font-bold text-flame mb-2">
+                <div className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-flame mb-2">
                   <Counter to={s.value} suffix={s.suffix} />
                 </div>
-                <div className="text-sm text-muted-foreground">{s.label}</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">{s.label}</div>
                 <div className="absolute top-3 right-3 w-2 h-2 rounded-full bg-primary group-hover:animate-pulse" />
               </motion.div>
             ))}

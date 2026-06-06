@@ -11,13 +11,13 @@ const TIMELINE = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-32 overflow-hidden">
+    <section id="experience" className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
       {/* Component 2 Sticker */}
       <motion.img
         src="/assets/component2.png"
         alt=""
         loading="lazy"
-        className="block absolute top-20 left-5 w-36 h-auto opacity-20 pointer-events-none -rotate-12"
+        className="hidden lg:block absolute top-20 left-5 w-28 lg:w-36 h-auto opacity-20 pointer-events-none -rotate-12"
         initial={{ opacity: 0, scale: 0.8, rotate: -20 }}
         whileInView={{ opacity: 0.2, scale: 1, rotate: -12 }}
         viewport={{ once: true }}
@@ -29,36 +29,36 @@ export default function Experience() {
         src="/assets/voxel-astronaut-cut.png"
         alt=""
         loading="lazy"
-        className="block absolute bottom-10 right-10 w-40 h-auto opacity-20 pointer-events-none rotate-6"
+        className="hidden lg:block absolute bottom-10 right-10 w-32 lg:w-40 h-auto opacity-20 pointer-events-none rotate-6"
         initial={{ opacity: 0, scale: 0.8, rotate: 12 }}
         whileInView={{ opacity: 0.2, scale: 1, rotate: 6 }}
         viewport={{ once: true }}
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      <div className="container relative z-10">
+      <div className="container relative z-10 px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-4 block">
             04 — Journey
           </span>
           <AnimatedText
             text="From learner to operator."
-            textClassName="font-display text-6xl font-bold tracking-tight text-foreground"
+            textClassName="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground"
             underlineClassName="text-primary"
             underlineDuration={1.3}
           />
         </motion.div>
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Glow line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
+          {/* Glow line - hidden on mobile */}
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary to-transparent" />
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-10 lg:space-y-12">
             {TIMELINE.map((t, i) => (
               <motion.div
                 key={t.title}
@@ -66,16 +66,17 @@ export default function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`relative flex items-start gap-6 ${
-                  i % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                className={`relative flex flex-col md:flex-row items-start gap-4 sm:gap-6 ${
+                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                 }`}
               >
-                {/* Dot */}
-                <div className="absolute left-1/2 -translate-x-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-primary shadow-glow ring-4 ring-background z-10 mt-2" />
+                {/* Dot - adjusted for mobile */}
+                <div className="hidden md:block absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-gradient-primary shadow-glow ring-4 ring-background z-10 mt-2" />
+                <div className="md:hidden w-3 h-3 rounded-full bg-gradient-primary shadow-glow flex-shrink-0 mt-2" />
 
-                <div className={`w-1/2 ${i % 2 === 0 ? "pr-12 text-right" : "pl-12"}`}>
+                <div className={`w-full md:w-1/2 ${i % 2 === 0 ? "md:pr-8 lg:pr-12 md:text-right" : "md:pl-8 lg:pl-12"}`}>
                   <motion.div 
-                    className="rounded-2xl p-6 transition-all duration-300 inline-block w-full overflow-hidden relative group"
+                    className="rounded-2xl p-4 sm:p-5 lg:p-6 transition-all duration-300 w-full overflow-hidden relative group"
                     whileHover={{ y: -3 }}
                     style={{
                       background: 'var(--metallic-gradient)',
@@ -103,7 +104,7 @@ export default function Experience() {
 
                     <div className="relative z-10">
                       <span className="font-mono text-xs text-primary uppercase tracking-widest">{t.year}</span>
-                      <h3 className="font-display text-xl font-semibold mt-1 mb-2 text-foreground">{t.title}</h3>
+                      <h3 className="font-display text-lg sm:text-xl font-semibold mt-1 mb-2 text-foreground">{t.title}</h3>
                       <p className="text-sm text-foreground/70 leading-relaxed">{t.desc}</p>
                     </div>
 
@@ -116,7 +117,7 @@ export default function Experience() {
                     />
                   </motion.div>
                 </div>
-                <div className="block w-1/2" />
+                <div className="hidden md:block w-1/2" />
               </motion.div>
             ))}
           </div>
