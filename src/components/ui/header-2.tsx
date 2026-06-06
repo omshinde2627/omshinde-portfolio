@@ -99,16 +99,16 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger - Enhanced visibility */}
         <Button 
           size="icon" 
           variant="ghost" 
           onClick={() => setOpen(!open)} 
-          className="md:hidden z-[70]"
+          className="md:hidden z-[70] h-11 w-11 hover:bg-primary/10 active:scale-95 transition-all"
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          <MenuToggleIcon open={open} className="size-5" duration={200} />
+          <MenuToggleIcon open={open} className="size-7 text-foreground" duration={200} strokeWidth={2.5} />
         </Button>
       </nav>
       </header>
